@@ -3,17 +3,25 @@ import { Base, Column } from '..';
 
 describe('Column Model', () => {
 
-  const sampleColData = {
-    id: Date.now(),
-    $element: $(document.createElement('div')),
-    name: 'Test column'
-  };
+
 
   it('create new board', () => {
-    const newCol = new Column(sampleColData);
-    expect(newCol)
+
+    const data = {
+      id: Date.now(),
+      $element: $(document.createElement('div')),
+      name: 'Test column'
+    };
+    const col = new Column(data);
+
+    expect(col)
       .toBeInstanceOf(Column)
       .toBeInstanceOf(Base)
-      .toMatchObject(sampleColData);
+      .toMatchObject(data);
+      
+    const $elementId = parseInt(col.$element.attr('id'));
+    const $elementClass = col.$element.attr('class');
+    expect($elementId).toBe(data.id);
+    expect($elementClass).toBe('column');
   });
 });

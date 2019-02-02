@@ -2,7 +2,7 @@ import { Base } from './BaseClass';
 
 export class Card extends Base {
   constructor({ description, color = 'white', ...rest }) {
-    super(rest);
+    super({...rest, className: 'card'});
     this.description = description;
     this.color = color;
   }

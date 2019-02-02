@@ -4,30 +4,35 @@ import { Base, Card } from '../.';
 describe('Card Model', () => {
 
   it('create new card', () => {
-    const sampleCardData = {
+
+    const data = {
       id: Date.now(),
       $element: $(document.createElement('div')),
       description: 'Test card',
       color: 'red'
     };
+    const card = new Card(data);
 
-    const card = new Card(sampleCardData);
     expect(card)
       .toBeInstanceOf(Card)
       .toBeInstanceOf(Base)
-      .toMatchObject(sampleCardData);
+      .toMatchObject(data);
+      
+    const $elementId = parseInt(card.$element.attr('id'));
+    const $elementClass = card.$element.attr('class');
+    expect($elementId).toBe(data.id);
+    expect($elementClass).toBe('card');
   });
 
 
   it('create new card with no passed color', () => {
-    const sampleCardData = {
+    const data = {
       id: Date.now(),
       $element: $(document.createElement('div')),
       description: 'Test card'
     };
 
-    const card = new Card(sampleCardData);
-    console.log(card);
+    const card = new Card(data);
     expect(card).toHaveProperty('color');
     expect(card.color).toBe('white');
   });

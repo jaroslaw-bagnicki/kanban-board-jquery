@@ -2,7 +2,7 @@ import { Base } from './BaseClass';
 
 export class Column extends Base {
   constructor({ name, ...rest }) {
-    super(rest);
+    super({...rest, className: 'column'});
     this.name = name;
   }
 
