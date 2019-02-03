@@ -1,12 +1,11 @@
-import $ from 'jquery';
-import { Base, Board } from '../.';
+import { Board } from '../.';
+import { generateId } from '../../utils';
 
 describe('Board Model', () => {
 
   const data = {
-    id: Date.now(),
-    $element: $(document.createElement('div')),
-    name: 'Test board'
+    id: generateId(),
+    name: 'Kanban Board'
   };
 
   it('create object', () => {
@@ -15,10 +14,9 @@ describe('Board Model', () => {
 
     expect(board)
       .toBeInstanceOf(Board)
-      .toBeInstanceOf(Base)
       .toMatchObject(data);
 
-    const $elId = parseInt(board.$element.attr('id'));
+    const $elId = board.$element.attr('id');
     const $elClass = board.$element.attr('class');
     expect($elId).toBe(data.id);
     expect($elClass).toBe('board');
@@ -27,11 +25,16 @@ describe('Board Model', () => {
   it('render method', () => {
  
     const board = new Board(data);
-    const htmlString = board.template();
+    const htmlString = `
+      <div class="board-header">
+        <h1>Kanban Board</h1>
+        <span class="buttons">
+          <button class="add-column-btn">Add  col</button>
+        </span>
+      </div>
+      <div class="columns-container"></div>
+    `.trim();
 
-    expect(board.$element.html()).toBe('');
-    board.render();
     expect(board.$element.html()).toBe(htmlString);
   });
-
 });

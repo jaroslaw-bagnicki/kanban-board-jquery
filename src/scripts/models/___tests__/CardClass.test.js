@@ -1,34 +1,33 @@
-import $ from 'jquery';
-import { Base, Card } from '../.';
+import { Card } from '../.';
+import { generateId } from '../../utils';
 
 describe('Card Model', () => {
 
   it('create new card', () => {
 
     const data = {
-      id: Date.now(),
-      $element: $(document.createElement('div')),
-      description: 'Test card',
+      id: generateId(), 
+      name: 'Task1',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, exercitationem.',
       color: 'red'
     };
     const card = new Card(data);
 
     expect(card)
       .toBeInstanceOf(Card)
-      .toBeInstanceOf(Base)
       .toMatchObject(data);
       
-    const $elementId = parseInt(card.$element.attr('id'));
+    const $elementId = card.$element.attr('id');
     const $elementClass = card.$element.attr('class');
     expect($elementId).toBe(data.id);
-    expect($elementClass).toBe('card');
+    expect($elementClass).toBe(expect.stringContaining('card'));
   });
 
   it('create new card with no passed color', () => {
     const data = {
-      id: Date.now(),
-      $element: $(document.createElement('div')),
-      description: 'Test card'
+      id: Date.now(), 
+      name: 'Task1',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, exercitationem.'
     };
 
     const card = new Card(data);

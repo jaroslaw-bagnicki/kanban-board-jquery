@@ -1,25 +1,35 @@
-import { Base } from './BaseClass';
+import $ from 'jquery';
+import { generateId } from '../utils';
 
-export class Card extends Base {
-  constructor({ description, color = 'white', ...rest }) {
-    super({...rest, className: 'card'});
+export class Card {
+  constructor({ id = generateId(), name, description, color = 'white' }) {
+    this.id = id;
+    this.name = name;
     this.description = description;
     this.color = color;
+    this.$element = $('<div>').attr('id', this.id).addClass('card');
+    this.render();
   }
 
-  template() {
-    return `
-      <h1>${this.name}</h1>
-      <button class="create-column">Add a column</button>
-      <div class="column-container"></div>
+  render() {
+    const template = `
+    <h2 class="card-header">
+      ${this.name}
+      <span class="buttons">
+      <button class="delete-btn">x</button>
+      </span>
+    </h2>
+    <p>${this.description}</p>
     `;
+    const $content = $(template);
+    $content.find('.delete-btn').click(this.delete);
+    this.$element.empty();
+    this.$element.append($content);
+    this.$element.addClass(`${this.color}`);
   }
 
-  deleteCard() {
+  delete() {
     // TODO
-  }
-
-  moveCard() {
-    // TODO
+    console.log('Delete card ...');
   }
 }
