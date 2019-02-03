@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { generateId } from '../utils';
+import { Card } from './CardClass';
 
 export class Column {
   constructor({ id = generateId(), name }) {
@@ -21,19 +22,26 @@ export class Column {
       <div class="cards-container"></div>
     `;
     const $content = $(template);
-    $content.find('.add-card-btn').click(this.addCard);
-    $content.find('.delete-btn').click(this.delete);
+    $content.find('.add-card-btn').click(() => {
+      const name = prompt('Enter name of card');
+      const description = prompt('Enter descpription');
+      const color = prompt('Chose color');
+      this.addCard({name, description, color});
+    });
+    $content.find('.delete-btn').click(() => this.delete());
     this.$element.empty();
     this.$element.append($content);
   }
 
-  addCard() {
-    // TODO
-    console.log('Add card ...');
+  get $cardsContainer() {
+    return this.$element.find('.cards-container');
+  }
+
+  addCard(data) {
+    this.$cardsContainer.append(new Card(data).$element);
   }
 
   delete() {
-    // TODO
-    console.log('Delete column ...');
+    this.$element.remove();
   }
 }
