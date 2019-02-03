@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { generateId } from '../utils';
+import { Column } from './ColumnClass';
 export class Board {
   constructor({ id = generateId(), name }) {
     this.id = id;
@@ -20,13 +21,19 @@ export class Board {
     `;
 
     const $content = $(template);
-    $content.find('.add-column-btn').click(this.addColumn);
+    $content.find('.add-column-btn').click(() => {
+      const name = prompt('Enter name of column');
+      this.addColumn({name});
+    });
     this.$element.empty();
     this.$element.append($content);
   }
 
-  addColumn() {
-    // TODO
-    console.log('Add column ...');
+  get $columnsContainer() {
+    return this.$element.find('.columns-container');
+  }
+
+  addColumn(data) {
+    this.$columnsContainer.append(new Column(data).$element);
   }
 }
