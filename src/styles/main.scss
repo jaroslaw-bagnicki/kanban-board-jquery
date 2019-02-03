@@ -1,7 +1,8 @@
-body {
-  background-color: #dfe6e9;
-}
+@import 'reset';
+@import 'variables';
+@import 'typography';
 
-.card-placeholder {
-  background: red;
-}
+@import 'components/app-container';
+@import 'components/board';
+@import 'components/column';
+@import 'components/card';

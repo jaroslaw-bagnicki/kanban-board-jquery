@@ -1,0 +1,48 @@
+.card {
+  @extend %card;
+  min-height: 10rem;
+  margin-top: .75rem;
+  padding: .5rem;
+  background: #fff;
+}
+
+.card-header {
+  @extend %header-layout;
+  position: relative;
+  margin-bottom: .5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-header::after {
+  content: '';
+  height: 1px;
+  width: 100%;
+  background: rgba(0, 0, 0, .7);
+  position: absolute;
+  bottom: -.5rem;
+  left: 0;
+}
+
+// Colors from: https://www.color-hex.com/color-palette/9747
+.card {
+  &.yellow {
+    background-color: #ffffe3;
+  }
+
+  &.red {
+    background-color: #ffdef2;
+  }
+
+  &.green {
+    background-color: #ddfffc;
+  }
+
+  &.blue {
+    background-color: #e2eeff;
+  }
+
+  &.violet {
+    background-color: #f2e2ff;
+  }
+}
