@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import 'jquery-ui/ui/widgets/sortable';
+import 'jquery-ui/ui/disable-selection';
+
 import { generateId } from '../utils';
 import { Column } from './ColumnClass';
 export class Board {
@@ -35,5 +38,13 @@ export class Board {
 
   addColumn(data) {
     this.$columnsContainer.append(new Column(data).$element);
+    this.initSortable();
+  }
+
+  initSortable() {
+    $('.cards-container').sortable({
+      connectWith: '.cards-container',
+      placeholder: 'card-placeholder'
+    }).disableSelection();
   }
 }
