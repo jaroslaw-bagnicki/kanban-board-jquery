@@ -22,14 +22,13 @@ export class Card {
     <p>${this.description}</p>
     `;
     const $content = $(template);
-    $content.find('.delete-btn').click(this.delete);
+    $content.find('.delete-btn').click(() => this.delete());
     this.$element.empty();
     this.$element.append($content);
     this.$element.addClass(`${this.color}`);
   }
 
   delete() {
-    // TODO
-    console.log('Delete card ...');
+    this.$element.remove();
   }
 }
