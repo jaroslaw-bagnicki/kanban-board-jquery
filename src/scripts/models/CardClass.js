@@ -7,6 +7,14 @@ export class Card extends Base {
     this.color = color;
   }
 
+  template() {
+    return `
+      <h1>${this.name}</h1>
+      <button class="create-column">Add a column</button>
+      <div class="column-container"></div>
+    `;
+  }
+
   deleteCard() {
     // TODO
   }
@@ -14,6 +22,4 @@ export class Card extends Base {
   moveCard() {
     // TODO
   }
-
-
 }

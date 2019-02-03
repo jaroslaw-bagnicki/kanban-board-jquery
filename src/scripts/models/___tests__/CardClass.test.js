@@ -24,7 +24,6 @@ describe('Card Model', () => {
     expect($elementClass).toBe('card');
   });
 
-
   it('create new card with no passed color', () => {
     const data = {
       id: Date.now(),

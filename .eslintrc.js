@@ -18,6 +18,11 @@ module.exports = {
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
         "comma-dangle": ["error", "never"],
+        "eol-last": ["error", "always"],
+        "no-multiple-empty-lines": [
+            "error",
+            { "max": 1, "maxBOF": 0, "maxEOF": 0 }
+        ],
         "no-console": "warn",
         "no-unused-vars": "warn",
         "jest/no-disabled-tests": "warn",

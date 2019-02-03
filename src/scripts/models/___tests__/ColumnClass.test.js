@@ -3,8 +3,6 @@ import { Base, Column } from '..';
 
 describe('Column Model', () => {
 
-
-
   it('create new board', () => {
 
     const data = {
