@@ -1,34 +1,10 @@
-import { API } from './config';
-import $ from 'jquery';
+import { API } from '../config/api';
 
 export function getBoard() {
-  fetch('https://cors-anywhere.herokuapp.com/https://kodilla.com/pl/bootcamp-api/board', {
+  fetch(API.BOARD_URL, {
     method: 'GET',
-    mode: 'no-cors',
-    headers: {
-      'X-Client-Id': '3382',
-      'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03'
-    }
+    headers: API.HEADERS
   }).then(res => res.json())
     .then(res => console.log(res))
     .catch(err=> console.error(err));
-}
-
-export function $getBoard() {
-  $.ajaxSetup({
-    crossDomain: true,
-    headers: {
-      'X-Client-Id': '3382',
-      'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03',
-      'cache-control': 'no-cache'
-    }
-  });
-
-  $.ajax({
-    url: 'https://kodilla.com/pl/bootcamp-api/board',
-    method: 'GET',
-    success: function(res) {
-      console.log(res);
-    }
-  });
 }
