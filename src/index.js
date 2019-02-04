@@ -2,36 +2,42 @@ import $ from 'jquery';
 import './styles/main.scss';
 import './scripts/fontAwesome';
 import { Board, Column, Card } from './scripts/models';
-import { generateId } from './scripts/utils';
 
-const boardData = {
-  id: generateId(),
-  name: 'Test board'
+const card1 = {
+  name: 'New task',
+  description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, exercitationem.'
 };
 
-const colData = { 
-  id: generateId(), 
-  name: 'TO DO' 
+const card2 = {
+  name: 'Create kanban board',
+  description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, exercitationem.',
+  color: 'yellow'
 };
 
-const cardData = {
-  id: generateId(), 
-  name: 'Task1',
+const card3 = {
+  name: 'Update kanban board',
   description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, exercitationem.',
   color: 'red'
 };
 
-const board = new Board(boardData);
-const col = new Column(colData);
-const card = new Card(cardData);
+const colToDo = {name: 'To Do'};
+const colInProgress = {name: 'In Progress'};
+const colDone = {name: 'Done'};
 
-function appBootsrtap() {
+const board = new Board({name: 'My Kanban Board'});
+board.addColumn(colToDo);
+board.addColumn(colInProgress);
+board.addColumn(colDone);
+
+board.$element.find('.cards-container').first().append(new Card(card1).$element);
+board.$element.find('.cards-container').first().append(new Card(card3).$element);
+board.$element.find('.cards-container').last().append(new Card(card2).$element);
+
+function appBootstrap() {
   const appContainer = $('#app-container');
   appContainer.append(board.$element);
-  board.$element.find('.columns-container').append(col.$element);
-  col.$element.find('.cards-container').append(card.$element);
 }
 
 $(function() {
-  appBootsrtap();
+  appBootstrap();
 });
