@@ -2,7 +2,7 @@ import $ from 'jquery';
 import './styles/main.scss';
 import './scripts/fontAwesome';
 import { Board, Column, Card } from './scripts/models';
-import { getBoard } from './scripts/service';
+import { getBoard, $getBoard } from './scripts/service';
 
 const card1 = {
   name: 'New task',

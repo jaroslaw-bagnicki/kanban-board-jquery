@@ -2,10 +2,9 @@ import { API } from './config';
 import $ from 'jquery';
 
 export function getBoard() {
-  fetch('https://kodilla.com/pl/bootcamp-api/board', {
+  fetch('https://cors-anywhere.herokuapp.com/https://kodilla.com/pl/bootcamp-api/board', {
     method: 'GET',
     mode: 'no-cors',
-    credentials: 'include',
     headers: {
       'X-Client-Id': '3382',
       'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03'
@@ -20,7 +19,8 @@ export function $getBoard() {
     crossDomain: true,
     headers: {
       'X-Client-Id': '3382',
-      'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03'
+      'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03',
+      'cache-control': 'no-cache'
     }
   });
 
