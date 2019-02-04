@@ -2,6 +2,7 @@ import $ from 'jquery';
 import './styles/main.scss';
 import './scripts/fontAwesome';
 import { Board, Column, Card } from './scripts/models';
+import { getBoard } from './scripts/service';
 
 const card1 = {
   name: 'New task',
@@ -33,7 +34,8 @@ board.$element.find('.cards-container').first().append(new Card(card1).$element)
 board.$element.find('.cards-container').first().append(new Card(card3).$element);
 board.$element.find('.cards-container').last().append(new Card(card2).$element);
 
-function appBootstrap() {
+async function appBootstrap() {
+  await getBoard();
   const appContainer = $('#app-container');
   appContainer.append(board.$element);
   board.initSortable();
