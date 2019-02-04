@@ -1,0 +1,29 @@
+button {
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 99px;
+  height: 2rem;
+  min-width: 2rem;
+  font-size: 1.25rem;
+  margin-right: .25rem;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.add-card-btn,
+  &,.add-column-btn {
+    color: #20914f;
+  }
+
+  &.delete-btn {
+    color: #c0392b;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .15);
+  }
+
+
+}
+

@@ -1,3 +1,9 @@
-body {
-  background-color: #dfe6e9;
-}
+@import 'reset';
+@import 'variables';
+@import 'typography';
+
+@import 'components/app-container';
+@import 'components/board';
+@import 'components/column';
+@import 'components/card';
+@import 'components/buttons';

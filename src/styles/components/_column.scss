@@ -1,0 +1,25 @@
+.column {
+  // position: relative;
+  flex-shrink: 0;
+  width: 20rem;
+  margin: $base-padding * .25;
+  border-radius: $card-border-radius;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.column-header {
+  @extend %header-card;
+  height: 3rem;
+  padding: .75rem;
+  font-size: 1.5rem;
+
+  .buttons {
+    display: inline-flex;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; // Don't work!
+}

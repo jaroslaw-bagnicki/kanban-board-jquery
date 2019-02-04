@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable quotes */
+
 module.exports = {
   moduleFileExtensions: ["js"],
   moduleNameMapper: {
@@ -5,7 +8,7 @@ module.exports = {
     "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"  
   },
   rootDir: "src",
-  testEnvironment: "node",
+  testEnvironment: "jest-environment-jsdom",
   testRegex: ".test.js$",
   setupFilesAfterEnv: ["jest-chain"]
 };
