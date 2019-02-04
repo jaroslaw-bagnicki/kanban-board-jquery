@@ -36,6 +36,7 @@ board.$element.find('.cards-container').last().append(new Card(card2).$element);
 function appBootstrap() {
   const appContainer = $('#app-container');
   appContainer.append(board.$element);
+  board.initSortable();
 }
 
 $(function() {

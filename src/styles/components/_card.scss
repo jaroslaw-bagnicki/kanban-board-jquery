@@ -46,3 +46,9 @@
     background-color: #f2e2ff;
   }
 }
+
+.card-placeholder {
+  @extend %card;
+  height: 10em;
+  border: 3px dashed $font-color;
+}
