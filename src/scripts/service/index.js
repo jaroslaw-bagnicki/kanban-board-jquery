@@ -9,37 +9,42 @@ export function getBoardData() {
     .catch(err => console.error(err));
 }
 
-export function addColumn(data) {
-  fetch(API.COLUMN_URL , {
+export function createColumn(data) {
+  
+  // Convert JS object to FormData object
+  const formData = new FormData();
+  formData.append('name', data.name);
+
+  return fetch(API.COLUMN_URL, {
     method: 'POST',
     headers: API.HEADERS,
-    body: JSON.stringify(data)
-  }).then(res => res.json())
+    body: formData
+  }).then(res => res)
     .catch(err => console.error(err));
 }
 
 export function deleteColumn(id) {
-  fetch(API.COLUMN_URL + id , {
+  return fetch(API.COLUMN_URL + id , {
     method: 'DELETE',
     headers: API.HEADERS
-  }).then(res => res.json())
+  }).then(res => res)
     .catch(err => console.error(err));
 }
 
-export function addCard(data) {
-  fetch(API.CARD_URL , {
+export function createCard(data) {
+  return fetch(API.CARD_URL , {
     method: 'POST',
     headers: API.HEADERS,
     body: JSON.stringify(data)
-  }).then(res => res.json())
+  }).then(res => res)
     .catch(err => console.error(err));
 }
 
 export function deleteCard(id) {
-  fetch(API.CARD_URL + id , {
+  return fetch(API.CARD_URL + id , {
     method: 'DELETE',
     headers: API.HEADERS
-  }).then(res => res.json())
+  }).then(res => res)
     .catch(err => console.error(err));
 }
 

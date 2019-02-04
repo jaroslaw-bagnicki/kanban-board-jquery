@@ -8,8 +8,8 @@ async function bootstrapBoard(appContainer) {
   const data = await getBoardData();
   const board = new Board(data);
   data.columns.forEach(col => {
-    const columnInstance = board.addColumn({ ...col, parentId: board.id });
-    col.cards.forEach(card => columnInstance.addCard({ ...card, parentId: col.id }));
+    const columnInstance = board.appendColumn({ ...col, parentId: board.id });
+    col.cards.forEach(card => columnInstance.addendCard({ ...card, parentId: col.id }));
   });
   appContainer.empty();
   appContainer.append(board.$element);

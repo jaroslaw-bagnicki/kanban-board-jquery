@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/sortable';
 import 'jquery-ui/ui/disable-selection';
+import * as service from '../service';
 
 import { generateId } from '../utils';
 import { Column } from '.';
@@ -30,7 +31,7 @@ export class Board {
     // Bind event listeners
     $content.find('.add-column-btn').click(() => {
       const name = prompt('Enter name of column') || 'Name fallback';
-      this.addColumn({ name, parentId: this.parentId });
+      this.createColumn({ name });
     });
 
     // Append content to host container
@@ -42,11 +43,21 @@ export class Board {
     return this.$element.find('.columns-container');
   }
 
-  addColumn(data) {
+  // Render column
+  appendColumn(data) {
     const column = new Column(data);
     this.$columnsContainer.append(column.$element);
     this.initSortable();
-    return column;
+  }
+
+  // Add new column
+  async createColumn(data) {
+    const res = await service.createColumn(data);
+    if (res.ok) {
+      this.appendColumn(data);
+    } else {
+      alert('Column add failed');
+    }
   }
 
   initSortable() {

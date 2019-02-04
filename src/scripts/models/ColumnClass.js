@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { generateId } from '../utils';
 import { Card } from './CardClass';
+import * as service from '../service';
 
 export class Column {
   constructor({ id = generateId(), parentId, name = 'Name fallback', cards = [] }) {
@@ -32,7 +33,7 @@ export class Column {
       const name = prompt('Enter name of card') || 'Name fallback';
       const description = prompt('Enter descpription') || '';
       const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
-      this.addCard({ name, description, color, parentId: this.parentId });
+      this.createCard({ name, description, color, parentId: this.parentId });
     });
     $content.find('.delete-btn').click(() => this.delete());
 
@@ -45,13 +46,30 @@ export class Column {
     return this.$element.find('.cards-container');
   }
 
-  addCard(data) {
+  // Render card
+  appendCard(data) {
     const card = new Card(data);
     this.$cardsContainer.append(card.$element);
     return card;
   }
 
-  delete() {
-    this.$element.remove();
+  // Create new card
+  async createCard(data) {
+    const res = await service.createCard(data);
+    console.log(res);
+    if (res.ok) {
+      this.appendCard(data);
+    } else {
+      alert('Card create failed');
+    }
+  }
+
+  async delete() {
+    const res = await service.deleteColumn(this.id);
+    if (res.ok) {
+      this.$element.remove();
+    } else {
+      alert('Column delete failed');
+    }
   }
 }
