@@ -54,7 +54,8 @@ export class Board {
   async createColumn(data) {
     const res = await service.createColumn(data);
     if (res.ok) {
-      this.appendColumn(data);
+      const { id } = await res.json();
+      this.appendColumn({ id, ...data });
     } else {
       alert('Column add failed');
     }

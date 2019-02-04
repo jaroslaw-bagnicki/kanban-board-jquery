@@ -58,7 +58,8 @@ export class Column {
     const res = await service.createCard(data);
     console.log(res);
     if (res.ok) {
-      this.appendCard(data);
+      const { id } = await res.json();
+      this.appendCard({ id, ...data});
     } else {
       alert('Card create failed');
     }
