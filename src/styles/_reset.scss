@@ -59,3 +59,26 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+// Button & input reset
+
+button,
+input {
+  margin:0;
+	border:0;
+	padding:0;
+	display:inline-block;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+	font-size: 100%;
+	font-family: inherit;
+	color: inherit;
+}
+
+input:focus,
+button:focus,
+select:focus {
+	outline: 0;
+}

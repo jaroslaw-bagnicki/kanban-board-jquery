@@ -16,7 +16,7 @@ export class Card {
     <h2 class="card-header">
       ${this.name}
       <span class="buttons">
-      <button class="delete-btn">x</button>
+      <button class="delete-btn"><i class="far fa-trash-alt"></i></button>
       </span>
     </h2>
     <p>${this.description}</p>

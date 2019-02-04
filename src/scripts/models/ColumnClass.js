@@ -15,8 +15,8 @@ export class Column {
       <h2 class="column-header">
         ${this.name}
         <span class="buttons">
-        <button class="add-card-btn">Add card</button>
-        <button class="delete-btn">x</button>
+        <button class="add-card-btn"><i class="far fa-plus-square"></i></button>
+        <button class="delete-btn"><i class="far fa-trash-alt"></i></button>
         </span>
       </h2>
       <div class="cards-container"></div>

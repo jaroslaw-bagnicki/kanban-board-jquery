@@ -1,5 +1,6 @@
-import './styles/main.scss';
 import $ from 'jquery';
+import './styles/main.scss';
+import './scripts/fontAwesome';
 import { Board, Column, Card } from './scripts/models';
 import { generateId } from './scripts/utils';
 

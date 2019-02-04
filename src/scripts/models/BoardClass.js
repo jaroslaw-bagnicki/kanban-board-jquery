@@ -17,7 +17,7 @@ export class Board {
       <div class="board-header">
         <h1>${this.name}</h1>
         <span class="buttons">
-          <button class="add-column-btn">Add  col</button>
+          <button class="add-column-btn"><i class="far fa-plus-square"></i></button>
         </span>
       </div>
       <div class="columns-container"></div>
