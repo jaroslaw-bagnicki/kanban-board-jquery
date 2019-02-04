@@ -1,6 +1,7 @@
 .card {
   @extend %card;
   min-height: 10rem;
+  
   margin-top: .75rem;
   padding: .75rem;
   background: #fff;
@@ -54,6 +55,7 @@
 .card-placeholder {
   @extend %card;
   height: 10em;
+  margin-top: .75rem;
   border: 3px dashed rgba(45, 52, 54, .7);
   box-shadow: none;
 }

@@ -1,6 +1,6 @@
 $base-padding: 1rem;
 $card-border-radius: .25rem;
-$base-box-shadow: 0 .25rem .75rem rgba(125, 125, 125, 0.7);
+$base-box-shadow: 0 .25rem .75rem rgba(50, 50, 50, 0.5);
 
 // Colors
 $font-color: #2d3436;
@@ -8,6 +8,7 @@ $button-bg-color: hsl(198, 19%, 84%);
 $header-color: #dfe6e9;
 
 %card {
+  flex-shrink: 0;
   border-radius: $card-border-radius;
   box-shadow: $base-box-shadow;
 }
