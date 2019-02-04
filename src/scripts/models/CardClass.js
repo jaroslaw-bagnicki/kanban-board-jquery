@@ -2,8 +2,9 @@ import $ from 'jquery';
 import { generateId } from '../utils';
 
 export class Card {
-  constructor({ id = generateId(), name, description, color }) {
+  constructor({ id = generateId(), parentId, name, description, color }) {
     this.id = id;
+    this.parentId = parentId;
     this.name = name;
     this.description = description;
     this.color = color;

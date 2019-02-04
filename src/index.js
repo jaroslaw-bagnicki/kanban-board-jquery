@@ -8,8 +8,8 @@ async function bootstrapBoard(appContainer) {
   const data = await getMockBoardData();
   const board = new Board(data);
   data.columns.forEach(col => {
-    const columnInstance = board.addColumn(col);
-    col.cards.forEach(card => columnInstance.addCard(card));
+    const columnInstance = board.addColumn({ ...col, parentId: board.id });
+    col.cards.forEach(card => columnInstance.addCard({ ...card, parentId: col.id }));
   });
   appContainer.append(board.$element);
   board.initSortable();

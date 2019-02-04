@@ -30,7 +30,7 @@ export class Board {
     // Bind event listeners
     $content.find('.add-column-btn').click(() => {
       const name = prompt('Enter name of column') || 'Name fallback';
-      this.addColumn({name});
+      this.addColumn({ name, parentId: this.parentId });
     });
 
     // Append content to host container

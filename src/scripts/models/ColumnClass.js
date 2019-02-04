@@ -3,8 +3,9 @@ import { generateId } from '../utils';
 import { Card } from './CardClass';
 
 export class Column {
-  constructor({ id = generateId(), name = 'Name fallback', cards = [] }) {
+  constructor({ id = generateId(), parentId, name = 'Name fallback', cards = [] }) {
     this.id = id;
+    this.parentId = parentId;
     this.name = name;
     this.cards = cards;
     this.$element = $('<div>').attr('id', this.id).addClass('column');
@@ -31,7 +32,7 @@ export class Column {
       const name = prompt('Enter name of card') || 'Name fallback';
       const description = prompt('Enter descpription') || '';
       const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
-      this.addCard({name, description, color});
+      this.addCard({ name, description, color, parentId: this.parentId });
     });
     $content.find('.delete-btn').click(() => this.delete());
 
