@@ -33,7 +33,7 @@ export class Column {
       const name = prompt('Enter name of card') || 'Name fallback';
       const description = prompt('Enter descpription') || '';
       const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
-      this.createCard({ name, description, color, parentId: this.parentId });
+      this.createCard({ name, description, color, bootcamp_kanban_column_id: this.parentId });
     });
     $content.find('.delete-btn').click(() => this.delete());
 

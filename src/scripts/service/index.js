@@ -10,7 +10,7 @@ export function getBoardData() {
 }
 
 export function createColumn(data) {
-  
+
   // Convert JS object to FormData object
   const formData = new FormData();
   formData.append('name', data.name);
@@ -32,10 +32,16 @@ export function deleteColumn(id) {
 }
 
 export function createCard(data) {
+  // Convert JS object to FormData object
+  const formData = new FormData();
+  formData.append('name', data.name);
+  formData.append('description', data.description);
+  formData.append('color', data.color);
+  formData.append('bootcamp_kanban_column_id', data.parentId);
   return fetch(API.CARD_URL , {
     method: 'POST',
     headers: API.HEADERS,
-    body: JSON.stringify(data)
+    body: formData
   }).then(res => res)
     .catch(err => console.error(err));
 }
