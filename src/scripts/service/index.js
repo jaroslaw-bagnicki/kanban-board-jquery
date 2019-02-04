@@ -8,6 +8,40 @@ export function getBoardData() {
     .catch(err => console.error(err));
 }
 
+export function addColumn(data) {
+  fetch(API.COLUMN_URL , {
+    method: 'POST',
+    headers: API.HEADERS,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .catch(err => console.error(err));
+}
+
+export function deleteColumn(id) {
+  fetch(API.COLUMN_URL + id , {
+    method: 'DELETE',
+    headers: API.HEADERS
+  }).then(res => res.json())
+    .catch(err => console.error(err));
+}
+
+export function addCard(data) {
+  fetch(API.CARD_URL , {
+    method: 'POST',
+    headers: API.HEADERS,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .catch(err => console.error(err));
+}
+
+export function deleteCard(id) {
+  fetch(API.CARD_URL + id , {
+    method: 'DELETE',
+    headers: API.HEADERS
+  }).then(res => res.json())
+    .catch(err => console.error(err));
+}
+
 export function getMockBoardData() {
   return Promise.resolve(mockData);
 }
