@@ -3,9 +3,10 @@ import { generateId } from '../utils';
 import { Card } from './CardClass';
 
 export class Column {
-  constructor({ id = generateId(), name }) {
+  constructor({ id = generateId(), name = 'Name fallback', cards = [] }) {
     this.id = id;
     this.name = name;
+    this.cards = cards;
     this.$element = $('<div>').attr('id', this.id).addClass('column');
     this.render();
   }
@@ -21,14 +22,20 @@ export class Column {
       </h2>
       <div class="cards-container"></div>
     `;
+
+    // Construct jQuery object from template
     const $content = $(template);
+
+    // Bind event listeners
     $content.find('.add-card-btn').click(() => {
-      const name = prompt('Enter name of card');
-      const description = prompt('Enter descpription');
-      const color = prompt('Chose color');
+      const name = prompt('Enter name of card') || 'Name fallback';
+      const description = prompt('Enter descpription') || '';
+      const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
       this.addCard({name, description, color});
     });
     $content.find('.delete-btn').click(() => this.delete());
+
+    // Append content to host container
     this.$element.empty();
     this.$element.append($content);
   }
@@ -38,7 +45,9 @@ export class Column {
   }
 
   addCard(data) {
-    this.$cardsContainer.append(new Card(data).$element);
+    const card = new Card(data);
+    this.$cardsContainer.append(card.$element);
+    return card;
   }
 
   delete() {

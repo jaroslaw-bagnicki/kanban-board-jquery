@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { generateId } from '../utils';
 
 export class Card {
-  constructor({ id = generateId(), name, description, color = 'white' }) {
+  constructor({ id = generateId(), name, description, color }) {
     this.id = id;
     this.name = name;
     this.description = description;
@@ -21,8 +21,13 @@ export class Card {
     </h2>
     <p>${this.description}</p>
     `;
+
+    // Construct jQuery object from template
     const $content = $(template);
+
+    // Bind event listeners
     $content.find('.delete-btn').click(() => this.delete());
+
     this.$element.empty();
     this.$element.append($content);
     this.$element.addClass(`${this.color}`);
