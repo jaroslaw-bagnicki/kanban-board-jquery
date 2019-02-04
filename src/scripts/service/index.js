@@ -1,10 +1,11 @@
 import { API } from '../config/api';
 
 export function getBoardData() {
-  fetch(API.BOARD_URL, {
+  return fetch(API.BOARD_URL, {
     method: 'GET',
     headers: API.HEADERS
   }).then(res => res.json())
+    .then(res => res)
     .catch(err => console.error(err));
 }
 
