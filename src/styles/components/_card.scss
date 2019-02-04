@@ -4,6 +4,10 @@
   margin-top: .75rem;
   padding: .75rem;
   background: #fff;
+
+  &:last-child {
+    margin-bottom: .75rem;
+  }
 }
 
 .card-header {
