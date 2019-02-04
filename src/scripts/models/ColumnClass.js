@@ -31,8 +31,11 @@ export class Column {
     // Bind event listeners
     $content.find('.add-card-btn').click(() => {
       const name = prompt('Enter name of card') || 'Name fallback';
+      if (name === null ) return;
       const description = prompt('Enter descpription') || '';
+      if (description === null )  return;
       const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
+      if (color === null ) return;
       this.createCard({ name, description, color, bootcamp_kanban_column_id: this.parentId });
     });
     $content.find('.delete-btn').click(() => this.delete());

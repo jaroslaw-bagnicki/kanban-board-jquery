@@ -31,6 +31,7 @@ export class Board {
     // Bind event listeners
     $content.find('.add-column-btn').click(() => {
       const name = prompt('Enter name of column') || 'Name fallback';
+      if (name === null ) return;
       this.createColumn({ name });
     });
 
