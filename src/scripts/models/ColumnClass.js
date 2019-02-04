@@ -24,8 +24,11 @@ export class Column {
     const $content = $(template);
     $content.find('.add-card-btn').click(() => {
       const name = prompt('Enter name of card');
+      if (name === null ) return;
       const description = prompt('Enter descpription');
+      if (description === null )  return;
       const color = prompt('Chose color');
+      if (color === null ) return;
       this.addCard({name, description, color});
     });
     $content.find('.delete-btn').click(() => this.delete());

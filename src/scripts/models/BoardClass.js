@@ -26,6 +26,7 @@ export class Board {
     const $content = $(template);
     $content.find('.add-column-btn').click(() => {
       const name = prompt('Enter name of column');
+      if (name === null ) return;
       this.addColumn({name});
     });
     this.$element.empty();
