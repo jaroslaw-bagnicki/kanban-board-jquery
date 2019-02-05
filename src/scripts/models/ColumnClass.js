@@ -36,7 +36,7 @@ export class Column {
       if (description === null )  return;
       const color = prompt('Chose color (red, green, yellow, blue, violet). By default will be white');
       if (color === null ) return;
-      this.createCard({ name, description, color, bootcamp_kanban_column_id: this.parentId });
+      this.createCard({ name, description, color });
     });
     $content.find('.delete-btn').click(() => this.delete());
 
@@ -59,9 +59,7 @@ export class Column {
   // Create new card
   async createCard(data) {
     data.name = data.name || 'Name fallback';
-    console.log('Sent data: ', data);
-    const res = await service.createCard(data);
-    console.log(res);
+    const res = await service.createCard({ bootcamp_kanban_column_id: this.id, ...data });
     if (res.ok) {
       const { id } = await res.json();
       this.appendCard({ id, ...data});

@@ -35,9 +35,9 @@ export function createCard(data) {
   // Convert JS object to FormData object
   const formData = new FormData();
   formData.append('name', data.name);
-  // formData.append('description', data.description);
-  // formData.append('color', data.color);
-  formData.append('bootcamp_kanban_column_id', data.parentId);
+  formData.append('description', data.description);
+  formData.append('color', data.color);
+  formData.append('bootcamp_kanban_column_id', data.bootcamp_kanban_column_id);
   return fetch(API.CARD_URL , {
     method: 'POST',
     headers: API.HEADERS,

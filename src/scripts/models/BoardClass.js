@@ -50,6 +50,7 @@ export class Board {
     const column = new Column(data);
     this.$columnsContainer.append(column.$element);
     this.initSortable();
+    return column;
   }
 
   // Add new column
