@@ -50,6 +50,15 @@ export function createCard(data) {
     .catch(err => console.error(err));
 }
 
+export function updateCardName(data) {
+  return fetch(API.CARD_URL + data.id , {
+    method: 'PUT',
+    headers: API.HEADERS,
+    body: JSON.stringify(data)
+  }).then(res => res)
+    .catch(err => console.error(err));
+}
+
 export function deleteCard(id) {
   return fetch(API.CARD_URL + id , {
     method: 'DELETE',

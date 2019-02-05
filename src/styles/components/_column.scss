@@ -20,16 +20,8 @@
   }
 }
 
-.column-name-box {
-  .edit-btn {
-    opacity: 0;
-  }
-
-  &:hover {
-    .edit-btn {
-      opacity: 1;
-    }
-  }
+.column-name-box:hover .edit-btn  {
+  opacity: 1;
 }
 
 .cards-container {

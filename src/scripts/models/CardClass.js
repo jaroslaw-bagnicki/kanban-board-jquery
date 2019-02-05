@@ -16,9 +16,12 @@ export class Card {
   render() {
     const template = `
     <h2 class="card-header">
-      ${this.name}
+      <span class="card-name-box">
+        <span class="card-name">${this.name}</span>
+        <button class="edit-name edit-btn"><i class="far fa-edit"></i></button>
+      </span>
       <span class="buttons">
-      <button class="delete delete-btn"><i class="far fa-trash-alt"></i></button>
+        <button class="delete delete-btn"><i class="far fa-trash-alt"></i></button>
       </span>
     </h2>
     <p>${this.description}</p>
@@ -29,10 +32,19 @@ export class Card {
 
     // Bind event listeners
     $content.find('.delete').click(() => this.delete());
+    $content.find('.edit-name').click(() => {
+      const name = prompt('Enter new name of column');
+      if (name === null ) return;
+      this.updateName(name);
+    });
 
     this.$element.empty();
     this.$element.append($content);
     this.$element.addClass(`${this.color}`);
+  }
+
+  get $cardName() {
+    return this.$element.find('.card-name');
   }
 
   async delete() {
@@ -41,6 +53,19 @@ export class Card {
       this.$element.remove();
     } else {
       alert('Column delete failed');
+    }
+  }
+
+  async updateName(name) {
+    const res = await service.updateCardName({
+      id: this.id, 
+      name, 
+      bootcamp_kanban_column_id: this.parentId
+    });
+    if (res.ok) {
+      this.$cardName.text(name);
+    } else {
+      alert('Update card name failed');
     }
   }
 }

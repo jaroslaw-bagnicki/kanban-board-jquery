@@ -28,6 +28,10 @@
   left: 0;
 }
 
+.card-name-box:hover .edit-btn  {
+  opacity: 1;
+}
+
 // Colors from: https://www.color-hex.com/color-palette/9747
 .card {
   &.yellow {
