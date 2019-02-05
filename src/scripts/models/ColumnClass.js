@@ -16,11 +16,9 @@ export class Column {
   render() {
     const template = `
       <h2 class="column-header">
-        <span class="column-name">
-          ${this.name}
-          <button class="edit-name edit-btn">
-            <i class="far fa-edit"></i>
-          </button>
+        <span class="column-name-box">
+          <span class="column-name">${this.name}</span>
+          <button class="edit-name edit-btn"><i class="far fa-edit"></i></button>
         </span>
         <span class="buttons">
         <button class="add-card add-btn"><i class="far fa-plus-square"></i></button>
@@ -58,6 +56,9 @@ export class Column {
   get $cardsContainer() {
     return this.$element.find('.cards-container');
   }
+  get $columnName() {
+    return this.$element.find('.column-name');
+  }
 
   // Render card
   appendCard(data) {
@@ -91,5 +92,10 @@ export class Column {
     const res = await service.updateColumnName(this.id, name);
     console.log('uddateColumnName res', res);
     console.log('updateColumnName res object', await res.json());
+    if (res.ok) {
+      this.$columnName.text(name);
+    } else {
+      alert('Update column name failed');
+    }
   }
 }
