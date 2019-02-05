@@ -2,7 +2,7 @@ import $ from 'jquery';
 import './styles/main.scss';
 import './scripts/fontAwesome';
 import { Board } from './scripts/models';
-import { getBoardData, getMockBoardData } from './scripts/service';
+import { getBoardData } from './scripts/service';
 
 async function bootstrapBoard(appContainer) {
   const data = await getBoardData();
