@@ -89,7 +89,7 @@ export class Column {
 
   async updateName(name) {
     const res = await service.updateColumnName(this.id, name);
-    console.log(res);
-    console.log(await res.json());
+    console.log('uddateColumnName res', res);
+    console.log('updateColumnName res object', await res.json());
   }
 }

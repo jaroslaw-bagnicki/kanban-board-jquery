@@ -27,12 +27,13 @@ export function updateColumnName(id, name) {
   const formData = new FormData();
   formData.append('id', id);
   formData.append('name', name);
-  console.log(formData);
+  
+  console.log('formData', Array.from(formData.entries())); // Temp
+
   return fetch(API.COLUMN_URL + id , {
     method: 'PUT',
     headers: API.HEADERS,
     body: formData
-    // body: JSON.stringify({name})
   }).then(res => res)
     .catch(err => console.error(err));
 }
