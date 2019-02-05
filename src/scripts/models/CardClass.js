@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { generateId } from '../utils';
+import * as service from '../service';
 
 export class Card {
   constructor({ id = generateId(), parentId, name, description, color }) {
@@ -34,7 +35,12 @@ export class Card {
     this.$element.addClass(`${this.color}`);
   }
 
-  delete() {
-    this.$element.remove();
+  async delete() {
+    const res = await service.deleteCard(this.id);
+    if (res.ok) {
+      this.$element.remove();
+    } else {
+      alert('Column delete failed');
+    }
   }
 }
