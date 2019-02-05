@@ -10,22 +10,16 @@ export function getBoardData() {
 }
 
 export function createColumn(data) {
-
-  // Convert JS object to FormData object
-  // const formData = new FormData();
-  // formData.append('name', data.name);
-  const body =JSON.stringify(data);
-  console.log(body);
   return fetch(API.COLUMN_URL, {
     method: 'POST',
     headers: API.HEADERS,
-    body: body
+    body: JSON.stringify(data)
   }).then(res => res)
     .catch(err => console.error(err));
 }
 
-export function updateColumnName(data) {
-  return fetch(API.COLUMN_URL + data.id , {
+export function updateColumn({id, ...data}) {
+  return fetch(API.COLUMN_URL + id , {
     method: 'PUT',
     headers: API.HEADERS,
     body: JSON.stringify(data)
@@ -50,8 +44,8 @@ export function createCard(data) {
     .catch(err => console.error(err));
 }
 
-export function updateCardName(data) {
-  return fetch(API.CARD_URL + data.id , {
+export function updateCard({id, ...data}) {
+  return fetch(API.CARD_URL + id , {
     method: 'PUT',
     headers: API.HEADERS,
     body: JSON.stringify(data)

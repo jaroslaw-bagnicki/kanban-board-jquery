@@ -41,9 +41,12 @@ export class Column {
       if (color === null ) return;
       this.createCard({ name, description, color });
     });
-    $content.find('.delete').click(() => this.delete());
+    $content.find('.delete').click(() => {
+      const confirmation = confirm('Confirm deletion of the column.');
+      if (confirmation) this.delete();
+    });
     $content.find('.edit-name').click(() => {
-      const name = prompt('Enter new name of column');
+      const name = prompt('Enter new name of the column.');
       if (name === null ) return;
       this.updateName(name);
     });
@@ -89,11 +92,11 @@ export class Column {
   }
 
   async updateName(name) {
-    const res = await service.updateColumnName({id: this.id, name});
+    const res = await service.updateColumn({id: this.id, name});
     if (res.ok) {
       this.$columnName.text(name);
     } else {
-      alert('Update column name failed');
+      alert('Column update failed');
     }
   }
 }

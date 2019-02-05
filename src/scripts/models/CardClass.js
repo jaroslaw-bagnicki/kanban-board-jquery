@@ -31,7 +31,10 @@ export class Card {
     const $content = $(template);
 
     // Bind event listeners
-    $content.find('.delete').click(() => this.delete());
+    $content.find('.delete').click(() => {
+      const confirmation = confirm('Confirm deletion of the card.');
+      if (confirmation) this.delete();
+    });
     $content.find('.edit-name').click(() => {
       const name = prompt('Enter new name of column');
       if (name === null ) return;
@@ -57,7 +60,7 @@ export class Card {
   }
 
   async updateName(name) {
-    const res = await service.updateCardName({
+    const res = await service.updateCard({
       id: this.id, 
       name, 
       bootcamp_kanban_column_id: this.parentId
@@ -65,7 +68,7 @@ export class Card {
     if (res.ok) {
       this.$cardName.text(name);
     } else {
-      alert('Update card name failed');
+      alert('Card update failed');
     }
   }
 }
