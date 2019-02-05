@@ -66,10 +66,22 @@ export class Board {
     }
   }
 
+  async moveCard({item: $card}) {
+    const id = $card[0].id;
+    const name = $card.find('.card-name').text();
+    const columnId = $card[0].parentElement.parentElement.id;
+    const res = await service.updateCard({id, name, bootcamp_kanban_column_id: columnId});
+    if (!res.ok) {
+      alert('Card move failed');
+      this.render();
+    }
+  }
+
   initSortable() {
     $('.cards-container').sortable({
       connectWith: '.cards-container',
-      placeholder: 'card-placeholder'
+      placeholder: 'card-placeholder',
+      receive: (e, ui) => this.moveCard(ui)
     }).disableSelection();
   }
 }

@@ -20,7 +20,7 @@ export function createColumn(data) {
 
 export function updateColumn({id, ...data}) {
   return fetch(API.COLUMN_URL + id , {
-    method: 'PUT',
+    method: 'PATCH',
     headers: API.HEADERS,
     body: JSON.stringify(data)
   }).then(res => res)
@@ -46,7 +46,7 @@ export function createCard(data) {
 
 export function updateCard({id, ...data}) {
   return fetch(API.CARD_URL + id , {
-    method: 'PUT',
+    method: 'PATCH',
     headers: API.HEADERS,
     body: JSON.stringify(data)
   }).then(res => res)
