@@ -6,6 +6,7 @@ export const API = {
   COLUMN_URL: `${SAFE_CORS_URL}${BASE_URL}column/`,
   CARD_URL: `${SAFE_CORS_URL}${BASE_URL}card/`,
   HEADERS: {
+    'Content-Type': 'application/json',
     'X-Client-Id': '3382',
     'X-Auth-Token': 'b08d91c72e2a4aa1168ad0e8fd3b8b03'
   }

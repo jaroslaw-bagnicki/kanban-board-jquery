@@ -89,9 +89,7 @@ export class Column {
   }
 
   async updateName(name) {
-    const res = await service.updateColumnName(this.id, name);
-    console.log('uddateColumnName res', res);
-    console.log('updateColumnName res object', await res.json());
+    const res = await service.updateColumnName({id: this.id, name});
     if (res.ok) {
       this.$columnName.text(name);
     } else {
