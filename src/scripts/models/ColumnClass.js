@@ -30,11 +30,11 @@ export class Column {
 
     // Bind event listeners
     $content.find('.add-card-btn').click(() => {
-      const name = prompt('Enter name of card') || 'Name fallback';
+      const name = prompt('Enter name of card');
       if (name === null ) return;
-      const description = prompt('Enter descpription') || '';
+      const description = prompt('Enter descpription');
       if (description === null )  return;
-      const color = prompt('Chose color (white, red, green, yellow, blue, violet)') || 'white';
+      const color = prompt('Chose color (red, green, yellow, blue, violet). By default will be white');
       if (color === null ) return;
       this.createCard({ name, description, color, bootcamp_kanban_column_id: this.parentId });
     });
@@ -58,6 +58,8 @@ export class Column {
 
   // Create new card
   async createCard(data) {
+    data.name = data.name || 'Name fallback';
+    console.log('Sent data: ', data);
     const res = await service.createCard(data);
     console.log(res);
     if (res.ok) {

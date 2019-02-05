@@ -30,9 +30,10 @@ export class Board {
 
     // Bind event listeners
     $content.find('.add-column-btn').click(() => {
-      const name = prompt('Enter name of column') || 'Name fallback';
+      const name = prompt('Enter name of column');
+      // Prompt cancelation returns null
       if (name === null ) return;
-      this.createColumn({ name });
+      this.createColumn(name);
     });
 
     // Append content to host container
@@ -52,11 +53,13 @@ export class Board {
   }
 
   // Add new column
-  async createColumn(data) {
-    const res = await service.createColumn(data);
+  async createColumn(name) {
+    // Fallback for emty string
+    name = name || 'Name fallback';
+    const res = await service.createColumn({ name });
     if (res.ok) {
       const { id } = await res.json();
-      this.appendColumn({ id, ...data });
+      this.appendColumn({ id, name });
     } else {
       alert('Column add failed');
     }
