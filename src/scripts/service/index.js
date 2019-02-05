@@ -14,11 +14,25 @@ export function createColumn(data) {
   // Convert JS object to FormData object
   const formData = new FormData();
   formData.append('name', data.name);
-
   return fetch(API.COLUMN_URL, {
     method: 'POST',
     headers: API.HEADERS,
     body: formData
+  }).then(res => res)
+    .catch(err => console.error(err));
+}
+
+export function updateColumnName(id, name) {
+  // Convert JSON object to FormData object
+  const formData = new FormData();
+  formData.append('id', id);
+  formData.append('name', name);
+  console.log(formData);
+  return fetch(API.COLUMN_URL + id , {
+    method: 'PUT',
+    headers: API.HEADERS,
+    body: formData
+    // body: JSON.stringify({name})
   }).then(res => res)
     .catch(err => console.error(err));
 }
@@ -32,7 +46,7 @@ export function deleteColumn(id) {
 }
 
 export function createCard(data) {
-  // Convert JS object to FormData object
+  // Convert JSON object to FormData object
   const formData = new FormData();
   formData.append('name', data.name);
   formData.append('description', data.description);

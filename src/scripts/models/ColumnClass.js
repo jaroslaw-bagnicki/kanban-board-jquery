@@ -38,8 +38,13 @@ export class Column {
       if (color === null ) return;
       this.createCard({ name, description, color });
     });
-    $content.find('.delete-btn').click(() => this.delete());
-
+    $content.find('.delete').click(() => this.delete());
+    $content.find('.edit-name').click(() => {
+      const name = prompt('Enter new name of column');
+      if (name === null ) return;
+      this.updateName(name);
+    });
+    
     // Append content to host container
     this.$element.empty();
     this.$element.append($content);
@@ -75,5 +80,11 @@ export class Column {
     } else {
       alert('Column delete failed');
     }
+  }
+
+  async updateName(name) {
+    const res = await service.updateColumnName(this.id, name);
+    console.log(res);
+    console.log(await res.json());
   }
 }
