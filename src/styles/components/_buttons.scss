@@ -1,18 +1,17 @@
 button {
-  background-color: rgba(0, 0, 0, .1);
   border-radius: 99px;
   height: 1.75rem;
   min-width: 1.75rem;
   font-size: 1.1rem;
   margin-right: .25rem;
   cursor: pointer;
+  transition: .2s;
 
   &:last-child {
     margin-right: 0;
   }
 
-  &.add-card-btn,
-  &,.add-column-btn {
+  &.add-btn {
     color: #20914f;
   }
 
@@ -20,10 +19,9 @@ button {
     color: #c0392b;
   }
 
-  &:hover {
-    background-color: rgba(0, 0, 0, .15);
+  &.edit-btn {
+    color: #2980b9;
+    opacity: 0;
   }
-
-
 }
 

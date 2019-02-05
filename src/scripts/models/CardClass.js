@@ -18,7 +18,7 @@ export class Card {
     <h2 class="card-header">
       ${this.name}
       <span class="buttons">
-      <button class="delete-btn"><i class="far fa-trash-alt"></i></button>
+      <button class="delete delete-btn"><i class="far fa-trash-alt"></i></button>
       </span>
     </h2>
     <p>${this.description}</p>
@@ -28,7 +28,7 @@ export class Card {
     const $content = $(template);
 
     // Bind event listeners
-    $content.find('.delete-btn').click(() => this.delete());
+    $content.find('.delete').click(() => this.delete());
 
     this.$element.empty();
     this.$element.append($content);

@@ -19,7 +19,7 @@ export class Board {
       <div class="board-header">
         <h1>${this.name}</h1>
         <span class="buttons">
-          <button class="add-column-btn"><i class="far fa-plus-square"></i></button>
+          <button class="add-column add-btn"><i class="far fa-plus-square"></i></button>
         </span>
       </div>
       <div class="columns-container"></div>
@@ -29,7 +29,7 @@ export class Board {
     const $content = $(template);
 
     // Bind event listeners
-    $content.find('.add-column-btn').click(() => {
+    $content.find('.add-column').click(() => {
       const name = prompt('Enter name of column');
       // Prompt cancelation returns null
       if (name === null ) return;

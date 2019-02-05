@@ -16,10 +16,15 @@ export class Column {
   render() {
     const template = `
       <h2 class="column-header">
-        ${this.name}
+        <span class="column-name">
+          ${this.name}
+          <button class="edit-name edit-btn">
+            <i class="far fa-edit"></i>
+          </button>
+        </span>
         <span class="buttons">
-        <button class="add-card-btn"><i class="far fa-plus-square"></i></button>
-        <button class="delete-btn"><i class="far fa-trash-alt"></i></button>
+        <button class="add-card add-btn"><i class="far fa-plus-square"></i></button>
+        <button class="delete delete-btn"><i class="far fa-trash-alt"></i></button>
         </span>
       </h2>
       <div class="cards-container"></div>
@@ -29,7 +34,7 @@ export class Column {
     const $content = $(template);
 
     // Bind event listeners
-    $content.find('.add-card-btn').click(() => {
+    $content.find('.add-card').click(() => {
       const name = prompt('Enter name of card');
       if (name === null ) return;
       const description = prompt('Enter descpription');
