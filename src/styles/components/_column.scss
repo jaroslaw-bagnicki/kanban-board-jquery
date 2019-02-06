@@ -1,5 +1,5 @@
 .column {
-  min-width: 15rem;
+  min-width: 17rem;
   width: 20rem;
   margin: $base-padding * .25;
   border-radius: $card-border-radius;
@@ -10,14 +10,18 @@
 
 .column-header {
   @extend %header-card;
-  height: 3rem;
+  height: 2.5rem;
   padding: .75rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   z-index: 1;
 
-  .buttons {
+ .buttons {
     display: inline-flex;
   }
+}
+
+.column-name-box:hover .edit-btn  {
+  opacity: 1;
 }
 
 .cards-container {
